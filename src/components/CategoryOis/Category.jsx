@@ -8,7 +8,7 @@ const CategoryOis = () => {
     const {loading, error, data}= FetchByMizan(`/api/products?populate=*&[filters][categories][id]=${id}`)
     if(loading) return <p>Loading...</p>
     if(error) return <p>Error!</p>;
-    console.log(data)
+    
     
     
 
