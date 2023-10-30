@@ -1,16 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Homepage , BlogContentPage,SingleProductPage,CategoryPage } from "./pages";
-import useFetch from "./hooks/useFetch";
-import { useEffect, useState } from "react";
-import useFetch2 from "./hooks/useFetch2";
 import AppContext from "./hooks/context";
-import Context from "./hooks/context";
-import { fetchDataFromApi } from "./hooks/api";
 import {BlogContent,
   Header,
  Footer,
 } from './components'
-import MyComponent from "./hooks/MyComponent";
 import Category from "./components/ShowPageCategory/Category";
 
 function App() {

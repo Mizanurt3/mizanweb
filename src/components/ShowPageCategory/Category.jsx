@@ -1,7 +1,5 @@
 import "./Category.scss";
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchDataFromApi } from "../../hooks/api";
 import FetchByMizan from "../../hooks/FetchByMizan";
 const Category = () => {
     const navigate=useNavigate();

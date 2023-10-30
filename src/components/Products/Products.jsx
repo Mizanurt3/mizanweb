@@ -1,8 +1,5 @@
 import "./Products.scss";
 import Product from "./Product/Product"
-
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 const Products = ({innerPage, headingText, prod,}) => {
     

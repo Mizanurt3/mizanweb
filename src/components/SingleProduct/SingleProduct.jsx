@@ -9,14 +9,9 @@ import {
     FaCartPlus,
 }
 from "react-icons/fa";
-import prod from "../../assets/products/earbuds-prod-1.webp";
 import { useContext, useState , useEffect} from "react";
-// import { Context } from "../../utils/context";
-// import { fetchDataFromApi } from "../../utils/api";
 import { useParams } from "react-router-dom";
-import useFetch from "../../hooks/useFetch";
 import { Context } from "../../hooks/context";
-import { fetchDataFromApi } from "../../hooks/api";
 import FetchByMizan from "../../hooks/FetchByMizan";
 const SingleProduct = () => {
     const {handleAddToCart,} = useContext(Context);

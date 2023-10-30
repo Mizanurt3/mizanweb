@@ -1,9 +1,8 @@
 import  { useEffect, useState } from 'react';
-import prod from "../../../assets/products/earbuds-prod-1.webp";
 import "./Search.scss";
 import {MdClose} from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
-import useFetch from '../../../hooks/useFetch';
+import FetchByMizan from '../../../hooks/FetchByMizan';
 function Search({setshowSearch}) {
   const [showprod, setShowprod] = useState(false);
   const [query,setQuery]=useState("")
@@ -13,25 +12,10 @@ function Search({setshowSearch}) {
     setQuery(e.target.value);
     e.preventDefault();
   }
- 
-  let {loading, data, error} =useFetch(`http://localhost:1337/api/products?populate=*&[filters][title][$contains]=${query}`)
-  if(loading) return <p>Loading...</p>
-  if(error) return <p>Error!</p>;
-  
-  // if(!query.length) {
-  //   data = null;
-  // }
-  // console.log(query.length)
 
-  // useEffect(()=>{
-  //   if(query.length == 0){
-  //     setShowprod(false);
-  //   }else{
-  //     setShowprod(true);
-  //   }
-  // })
-  
-  
+  const {loading, error, data}= FetchByMizan(`/api/products?populate=*&[filters][title][$contains]=${query}`)
+    if(loading) return <p>Loading...</p>
+    if(error) return <p>Error!</p>;
 
   return (
     <div className='search-modal'>

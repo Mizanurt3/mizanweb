@@ -1,8 +1,6 @@
 import "./Category.scss";
-import Products from "../Products/Products";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchDataFromApi } from "../../hooks/api";
 import FetchByMizan from "../../hooks/FetchByMizan";
 const CategoryOis = () => {
     const {id}=useParams();

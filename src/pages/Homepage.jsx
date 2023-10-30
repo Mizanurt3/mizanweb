@@ -1,8 +1,6 @@
 import React from 'react'
 import {  Banner, Category, Products } from '../components';
-import useFetch from '../hooks/useFetch';
 import './Home.scss';
-import { fetchDataFromApi } from '../hooks/api';
 import { useState, useEffect } from 'react';
 import FetchByMizan from '../hooks/FetchByMizan';
 export function Homepage() {
