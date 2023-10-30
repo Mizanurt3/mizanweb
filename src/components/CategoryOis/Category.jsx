@@ -2,12 +2,13 @@ import "./Category.scss";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import FetchByMizan from "../../hooks/FetchByMizan";
+import Products from "../Products/Products";
 const CategoryOis = () => {
     const {id}=useParams();
-    const {loading, error, data}= FetchByMizan('/api/products?populate=*')
+    const {loading, error, data}= FetchByMizan(`/api/products?populate=*&[filters][categories][id]=${id}`)
     if(loading) return <p>Loading...</p>
     if(error) return <p>Error!</p>;
-    
+    console.log(data)
     
     
 
