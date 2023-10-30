@@ -25,6 +25,7 @@ const FetchByMizan = (apiEndPoint, method) => {
             } catch (error) {
                 setError(error);
                 setLoading(false);
+                console.log(error);
             }
         };
         fetchData();
