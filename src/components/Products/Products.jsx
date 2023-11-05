@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const Products = ({innerPage, headingText, prod,}) => {
     
     const navigate=useNavigate();
-   console.log(prod)
+  
 
 
  

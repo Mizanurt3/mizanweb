@@ -1,15 +1,15 @@
 import React from 'react'
 import {  Banner, Category, Products } from '../components';
 import './Home.scss';
-import { useState, useEffect } from 'react';
-import FetchByMizan from '../hooks/FetchByMizan';
+import { Context } from '../hooks/context';
+import { useContext } from 'react';
+import fetchByReactQuery from '../hooks/fetchByReactQuery';
 export function Homepage() {
-  const {loading, error, data}= FetchByMizan('/api/products?populate=*')
-    if(loading) return <p>Loading...</p>
-    if(error) return <p>Error!</p>;
-    
-    
+    const { data, isLoading, isError } = fetchByReactQuery('/api/products?populate=*'); // Replace with your actual endpoint
+    if (isLoading) return <h1>Loading...</h1>;
+    if (isError) return <h1>Error: {error.message}</h1>;
 
+ 
     return (
         <>
             

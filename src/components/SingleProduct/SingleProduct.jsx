@@ -12,7 +12,7 @@ from "react-icons/fa";
 import { useContext, useState , useEffect} from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../../hooks/context";
-import FetchByMizan from "../../hooks/FetchByMizan";
+import fetchByReactQuery from "../../hooks/fetchByReactQuery";
 const SingleProduct = () => {
     const {handleAddToCart,} = useContext(Context);
 
@@ -34,9 +34,9 @@ const SingleProduct = () => {
 
     const {id}=useParams();
     
-    const {loading, error, data}= FetchByMizan('/api/products?populate=*')
-    if(loading) return <p>Loading...</p>
-    if(error) return <p>Error!</p>;
+    const { data, isLoading, isError } = fetchByReactQuery('/api/products?populate=*'); // Replace with your actual endpoint
+    if (isLoading) return <h1>Loading...</h1>;
+    if (isError) return <h1>Error: {error.message}</h1>;
     // console.log(data)
 
     let product = data.data.filter(product=>product.id==id)

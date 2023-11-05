@@ -1,11 +1,12 @@
 import "./Category.scss";
 import { useNavigate } from "react-router-dom";
 import FetchByMizan from "../../hooks/FetchByMizan";
+import fetchByReactQuery from "../../hooks/fetchByReactQuery";
 const Category = () => {
     const navigate=useNavigate();
-    const {loading, error, data}= FetchByMizan('/api/categories?populate=*')
-    if(loading) return <p>Loading...</p>
-    if(error) return <p>Error!</p>;
+    const { data, isLoading, isError } = fetchByReactQuery('/api/categories?populate=*'); // Replace with your actual endpoint
+    if (isLoading) return <h1>Loading...</h1>;
+    if (isError) return <h1>Error: {error.message}</h1>;
     let cate=data;
 
     return (

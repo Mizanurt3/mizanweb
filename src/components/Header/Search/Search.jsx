@@ -2,7 +2,7 @@ import  { useEffect, useState } from 'react';
 import "./Search.scss";
 import {MdClose} from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
-import FetchByMizan from '../../../hooks/FetchByMizan';
+import fetchByReactQuery from '../../../hooks/fetchByReactQuery';
 function Search({setshowSearch}) {
   const [showprod, setShowprod] = useState(false);
   const [query,setQuery]=useState("")
@@ -13,9 +13,11 @@ function Search({setshowSearch}) {
     e.preventDefault();
   }
 
-  const {loading, error, data}= FetchByMizan(`/api/products?populate=*&[filters][title][$contains]=${query}`)
-    if(loading) return <p>Loading...</p>
-    if(error) return <p>Error!</p>;
+ 
+
+    const { data, isLoading, isError } = fetchByReactQuery(`/api/products?populate=*&[filters][title][$contains]=${query}`); // Replace with your actual endpoint
+    if (isLoading) return <h1>Loading...</h1>;
+    if (isError) return <h1>Error: {error.message}</h1>;
 
   return (
     <div className='search-modal'>
@@ -44,7 +46,7 @@ function Search({setshowSearch}) {
                 setshowSearch(false)
               }} className="search-result-item">
               <div className="img-container">
-                <img src={`http://localhost:1337${item.attributes.img.data[0].attributes.url}`} alt="" />
+                <img src={item.attributes.img.data[0].attributes.url} alt="" />
               </div>
               <div className="prod-details">
                 <span className="name">{item.attributes.title}</span>

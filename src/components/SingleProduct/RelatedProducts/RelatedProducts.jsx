@@ -1,12 +1,12 @@
 import {Products} from '../../../components';
-import FetchByMizan from '../../../hooks/FetchByMizan';
+import fetchByReactQuery from '../../../hooks/fetchByReactQuery';
 const RelatedProducts = ({productId,categoryId}) => {
 
-    const {loading, error, data}= FetchByMizan(`/api/products?populate=*&filters[id][$ne]=${productId}&filters[categories][id]=${categoryId}&pagination[start]=0&pagination[limit]=4`)
-    if(loading) return <p>Loading...</p>
-    if(error) return <p>Error!</p>;
+   
 
-
+    const { data, isLoading, isError } = fetchByReactQuery(`/api/products?populate=*&filters[id][$ne]=${productId}&filters[categories][id]=${categoryId}&pagination[start]=0&pagination[limit]=4`); // Replace with your actual endpoint
+    if (isLoading) return <h1>Loading...</h1>;
+    if (isError) return <h1>Error: {error.message}</h1>;
    
 
 

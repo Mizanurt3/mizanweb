@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Homepage , BlogContentPage,SingleProductPage,CategoryPage } from "./pages";
 import AppContext from "./hooks/context";
+import { QueryClient, QueryClientProvider } from "react-query";
+const queryClient = new QueryClient();
 import {BlogContent,
   Header,
  Footer,
@@ -15,6 +17,7 @@ function App() {
       
       <BrowserRouter>
       <AppContext>
+      <QueryClientProvider client={queryClient}>
       <Header/>
       <Routes>
       
@@ -24,6 +27,7 @@ function App() {
         <Route path="/mizanweb/category/:id"  element={<CategoryPage/>}/>
       </Routes>
       <Footer/>
+      </QueryClientProvider>
       </AppContext>
       </BrowserRouter>
       
